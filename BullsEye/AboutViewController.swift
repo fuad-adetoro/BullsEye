@@ -15,9 +15,13 @@ class AboutViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Set the URL to the local BullsEye.html file.
         if let url = Bundle.main.url(forResource: "BullsEye", withExtension: "html") {
+            // set the htmlData to the contents of the webpage
             if let htmlData = try? Data(contentsOf: url) {
                 let baseURL = URL(fileURLWithPath: Bundle.main.bundlePath)
+                
+                // load the webpage
                 webView.load(htmlData, mimeType: "text/html", textEncodingName: "UTF-8", baseURL: baseURL)
             }
         }
@@ -28,6 +32,7 @@ class AboutViewController: UIViewController {
     }
     
     @IBAction func close(_ sender: Any) {
+        // Dismiss the modal 
         dismiss(animated: true, completion: nil)
     }
     
